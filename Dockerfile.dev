@@ -6,6 +6,9 @@ ARG NODE_VERSION=22.14.0-alpine
 # Use a lightweight Node.js image for development
 FROM node:${NODE_VERSION} AS dev
 
+# Set environment variable to indicate development mode
+ENV NODE_ENV=development
+
 # Set the working directory inside the container
 WORKDIR /app
 
