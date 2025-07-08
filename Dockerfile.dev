@@ -1,5 +1,5 @@
 # =========================================
-# Stage 1: Develop the React.js Application
+# Stage 1: Develop the Vue.js Application
 # =========================================
 ARG NODE_VERSION=23.11.0-alpine
 
@@ -20,6 +20,12 @@ RUN --mount=type=cache,target=/root/.npm npm install
 
 # Copy the rest of the application source code into the container
 COPY . .
+
+# Change ownership of the application directory to the node user
+RUN chown -R node:node /app
+
+# Switch to the node user
+USER node
 
 # Expose the port used by the Vite development server
 EXPOSE 5173
