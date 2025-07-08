@@ -15,9 +15,12 @@ services:
       - "5173:5173"
     develop:
       watch:
-        - action: sync
-          path: .
-          target: /app
+        - path: ./src
+          action: sync
+        - path: ./package.json
+          action: restart
+        - path: ./vite.config.js
+          action: restart
   vuejs-test:
     build:
       context: .
